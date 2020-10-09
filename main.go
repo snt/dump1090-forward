@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
 	"io"
@@ -40,10 +39,10 @@ func relayLoop(sourceAddr string, targetAddr string) error {
 
 	log.Printf("connected and relaying from %s to %s", sourceAddr, targetAddr)
 
-	reader := bufio.NewReader(sourceTcp)
-	writer := bufio.NewWriter(targetTcp)
+	//reader := bufio.NewReader(sourceTcp)
+	//writer := bufio.NewWriter(targetTcp)
 
-	wc, err := io.Copy(writer, reader)
+	wc, err := io.Copy(targetTcp, sourceTcp)
 	if err != nil {
 		return fmt.Errorf("failed to copy error=[%v]", err)
 	}
